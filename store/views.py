@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import *
 
 def cart(request):
     context = {}
@@ -9,5 +10,6 @@ def checkout(request):
     return render(request, 'store/checkout.html', context)
 
 def store(request):
-    context = {}
+    products = Product.objects.all()
+    context = {'products':products}
     return render(request, 'store/store.html', context)
